@@ -22,6 +22,7 @@ all: obj_make $(NAME)
 $(NAME):
 	ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
+	mv $(NAME) ./lib
 
 obj_make: $(SRCS) $(INC_DIR)/$(INC)
 	gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
@@ -31,6 +32,6 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf ./lib/$(NAME)
 
 re: fclean all
