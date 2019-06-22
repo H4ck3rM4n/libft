@@ -2,10 +2,8 @@ NAME	= libft.a
 
 CFLAGS	= -Wall -Werror -Wextra -std=c99 -c
 
-SRC		= ft_bzero.c \
-		  ft_memset.c\
-		  ft_memcpy.c\
-		  ft_memccpy.c
+SRC		= ft_bzero.c ft_memset.c ft_memcpy.c ft_memccpy.c \
+		  ft_memmove.c
 
 INC		= libft.h
 INC_DIR	= ./include
@@ -22,7 +20,6 @@ all: obj_make $(NAME)
 $(NAME):
 	ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
-	mv $(NAME) ./lib
 
 obj_make: $(SRCS) $(INC_DIR)/$(INC)
 	gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
@@ -32,6 +29,6 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf ./lib/$(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
