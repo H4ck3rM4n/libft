@@ -2,14 +2,14 @@
 #include <stdio.h>
 
 int main () {
-   char src[40];
-   char dest[12];
+   char src[50], dest[50];
 
-   ft_memset(dest, '\0', sizeof(dest));
-   ft_strcpy(src, "This is tutorialspoint.com");
-   ft_strncpy(dest, src, 10);
+   ft_strcpy(src,  "This is source");
+   ft_strcpy(dest, "This is destination");
 
-   printf("Final copied string : %s\n", dest);
+   ft_strcat(dest, src);
+
+   printf("Final destination string : |%s|", dest);
 
    return(0);
 }
