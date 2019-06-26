@@ -2,13 +2,14 @@
 #include <stdio.h>
 
 int main () {
-   char str[50];
-   int len;
+   char src[40];
+   char dest[12];
 
-   strcpy(str, "This is tutorialspoint.com");
+   ft_memset(dest, '\0', sizeof(dest));
+   ft_strcpy(src, "This is tutorialspoint.com");
+   ft_strncpy(dest, src, 10);
 
-   len = ft_strlen(str);
-   printf("Length of |%s| is |%d|\n", str, len);
+   printf("Final copied string : %s\n", dest);
 
    return(0);
 }
