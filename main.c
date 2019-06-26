@@ -7,7 +7,7 @@ int main () {
    ft_strcpy(src,  "This is source");
    ft_strcpy(dest, "This is destination");
 
-   ft_strcat(dest, src);
+   ft_strncat(dest, src, 4);
 
    printf("Final destination string : |%s|", dest);
 
