@@ -2,14 +2,13 @@
 #include <stdio.h>
 
 int main () {
-   char src[50], dest[50];
+   const char str[] = "http://www.tutorialspoint.com";
+   const char ch = '.';
+   char *ret;
 
-   ft_strcpy(src,  "This is source");
-   ft_strcpy(dest, "This is destination");
+   ret = ft_strrchr(str, ch);
 
-   ft_strncat(dest, src, 4);
-
-   printf("Final destination string : |%s|", dest);
+   printf("String after |%c| is - |%s|\n", ch, ret);
 
    return(0);
 }
