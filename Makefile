@@ -29,20 +29,18 @@ OBJS		= $(foreach element, $(OBJ), $(OBJ_DIR)/$(element))
 SRCS		= $(foreach element, $(SRC), $(SRC_DIR)/$(element))
 
 
-all: obj_make $(NAME)
+all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS) $(INC_DIR)/$(INC)
+    gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
+    mv *.o $(OBJ_DIR)
 	ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-obj_make: $(SRCS) $(INC_DIR)/$(INC)
-	gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
-	mv *.o $(OBJ_DIR)/
-
 clean:
-	rm -rf $(OBJS)
+	@/bin/rm -f $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
