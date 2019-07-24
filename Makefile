@@ -32,9 +32,12 @@ SRCS		= $(foreach element, $(SRC), $(SRC_DIR)/$(element))
 all: $(NAME)
 
 $(NAME): $(SRCS) $(INC_DIR)/$(INC)
-	gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
-	mv *.o $(OBJ_DIR)
-	ar rs $(NAME) $(OBJS)
+    $(info /*Compiling src files in .o files*/)
+	@gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
+    $(info /*Move .o files in obj dir*/)
+	@mv *.o $(OBJ_DIR)
+    $(info /*Finishing work*/)
+	@ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
@@ -43,4 +46,6 @@ clean:
 fclean: clean
 	@/bin/rm -f $(NAME)
 
-re: fclean all
+re: fclean  all
+
+.PHONY: all, clean, fclean, re
