@@ -32,8 +32,8 @@ SRCS		= $(foreach element, $(SRC), $(SRC_DIR)/$(element))
 all: $(NAME)
 
 $(NAME): $(SRCS) $(INC_DIR)/$(INC)
-    gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
-    mv *.o $(OBJ_DIR)
+	gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
+	mv *.o $(OBJ_DIR)
 	ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
