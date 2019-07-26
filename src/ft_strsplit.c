@@ -36,7 +36,7 @@ static  int ft_wordlen(const char *s, char c)
     int i;
 
     i = 0;
-    while (s[i] != c)
+    while (s[i] != c && i < (int)ft_strlen(s))
         i++;
     return(i);
 }
