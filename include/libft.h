@@ -1,6 +1,8 @@
 #ifndef _LIBFT_H
 #define _LIBFT_H
 
+#define BUFF_SIZE 64
+
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -75,5 +77,7 @@ void    ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void    ft_lstadd(t_list **alst, t_list *new);
 t_list  *ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void    ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+
+int     get_next_line(int fd, char **line);
 
 #endif
