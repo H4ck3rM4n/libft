@@ -2,13 +2,17 @@
 
 t_list      *ft_lstrev(t_list *lst)
 {
-    t_list *new = ft_lstnew(lst->content, lst->content_size);
-    lst = lst->next;
+    t_list *prev = NULL;
+    t_list *current = lst;
+    t_list *next = NULL;
 
-    while(lst->content != NULL)
+    while(current != NULL)
     {
-        ft_lstadd(&new, lst);
-        lst = lst->next;
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
     }
-    return (new);
+
+    return (prev);
 }
