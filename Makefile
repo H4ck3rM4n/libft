@@ -17,10 +17,12 @@ SRC         = ft_bzero.c ft_memset.c ft_memcpy.c ft_memccpy.c \
               ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
               ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
               ft_lstadd.c ft_lstiter.c ft_lstmap.c get_next_line.c \
-              ft_lstrev.c
+              ft_lstrev.c ft_print_char.c ft_print_number.c ft_print_str.c \
+              ft_utils.c ft_printf.c
 
 
 INC         = libft.h
+INC_PRTF	= ft_printf.h
 INC_DIR		= ./include
 SRC_DIR		= ./src
 OBJ_DIR		= ./obj
@@ -32,21 +34,24 @@ SRCS		= $(foreach element, $(SRC), $(SRC_DIR)/$(element))
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(INC_DIR)/$(INC)
-	$(info /*Compiling src files in .o files*/)
-	@gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
-	$(info /*Move .o files in obj dir*/)
-	@mv *.o $(OBJ_DIR)
-	$(info /*Finishing work*/)
+$(NAME): obj $(SRCS) $(INC_DIR)/$(INC) $(INC_DIR)/$(INC_PRTF)
+	$(info [x] Finishing work)
 	@ar rs $(NAME) $(OBJS)
 	ranlib $(NAME)
 
+obj:
+	$(info [x] Compiling src files in .o files)
+	@gcc $(CFLAGS) -I$(INC_DIR) $(SRCS)
+	@mv $(OBJ) $(OBJ_DIR)
+
 clean:
+	$(info [x] Cleaning objects)
 	@/bin/rm -f $(OBJS)
 
 fclean: clean
+	$(info [x] Deleting library file)
 	@/bin/rm -f $(NAME)
 
 re: fclean  all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, re, obj
