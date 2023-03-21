@@ -9,18 +9,21 @@ int     ft_get_conversion(t_arg *arg, const char *format, int index)
             break;
         case 'C':
             ft_print_char(arg);
+            break;
         case 's':
             ft_print_s(arg);
             break;
         case 'S':
             arg->flags->l = 1;
             ft_print_s(arg);
+            break;
         case 'd':
             ft_print_number(arg);
             break;
         case 'D':
             arg->flags->l = 1;
             ft_print_number(arg);
+            break;
         case 'i':
             ft_print_number(arg);
             break;
@@ -30,8 +33,10 @@ int     ft_get_conversion(t_arg *arg, const char *format, int index)
         case 'U':
             arg->flags->l = 1;
             ft_print_unsigned_number(arg);
+            break;
         case '%':
             ft_put_char(arg, '%');
+            break;
     }
 
     return (++index);
